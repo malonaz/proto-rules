@@ -1,21 +1,10 @@
 [Please]
-Version = 17.8.7
-
-[proto]
-protoctool = //third_party/proto:protoc
-protocgoplugin = //third_party/go:protoc-gen-go
-language = go
-
-[Parse]
-PreloadSubincludes = ///python//build_defs:python
+version = 17.14.0
 
 [Plugin "go"]
 Target = //plugins:go
-ImportPath = github.com/please-build/proto-rules
+ImportPath = github.com/malonaz/proto-rules
 GoTool = //third_party/go:toolchain|go
-
-[Plugin "python"]
-Target = //plugins:python
 
 [PluginDefinition]
 Name = proto
@@ -29,7 +18,7 @@ Optional = true
 
 [PluginConfig "protoc_tool"]
 Help = The protoc tool, as either a binary in the PATH or a build label
-DefaultValue = protoc
+DefaultValue = //third_party/proto:protoc
 
 [PluginConfig "protoc_flags"]
 Help = Any additional flags to pass to protoc
