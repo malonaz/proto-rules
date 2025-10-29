@@ -90,8 +90,18 @@ def proto_library(name:str, srcs:list, deps:list=[], visibility:list=None, label
             for k in additional_provides:
                 provides[k] = f":_{name}#{k}"
 
-    deps =  provides.values()
-    provides["proto"] = f":{name}"
+    filegroup(
+        name = f'_{name}#proto',
+        srcs = srcs,
+        visibility = visibility,
+        exported_deps = deps,
+        labels = labels,
+        requires = ['proto'],
+        output_is_complete = False,
+        test_only = test_only,
+    )
+    provides["proto"] = f':_{name}#proto'
+
     # This is the final rule that directs dependencies to the appropriate language.
     return filegroup(
         name = name,
