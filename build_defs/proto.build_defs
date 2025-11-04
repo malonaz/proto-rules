@@ -114,7 +114,8 @@ def proto_library(name:str, srcs:list, deps:list=[], visibility:list=None, label
     )
 
 def grpc_library(name:str, srcs:list, deps:list=None, visibility:list=None, languages:list|dict=None,
-                 labels:list&features&tags=[], test_only:bool&testonly=False, root_dir:str='', protoc_flags:list=None):
+                 labels:list&features&tags=[], test_only:bool&testonly=False, root_dir:str='', protoc_flags:list=None,
+                 additional_context:dict=None):
     """Defines a rule for a grpc library.
 
     Args:
@@ -141,10 +142,12 @@ def grpc_library(name:str, srcs:list, deps:list=None, visibility:list=None, lang
         test_only = test_only,
         root_dir = root_dir,
         protoc_flags = protoc_flags,
+        additional_context=additional_context,
     )
 
 def grpc_gateway_library(name:str, srcs:list, deps:list=None, visibility:list=None, languages:list|dict=None,
-                 labels:list&features&tags=[], test_only:bool&testonly=False, root_dir:str='', protoc_flags:list=None):
+                         labels:list&features&tags=[], test_only:bool&testonly=False, root_dir:str='', protoc_flags:list=None,
+                 additional_context:dict=None):
     """Defines a rule for a grpc library.
 
     Args:
@@ -171,6 +174,7 @@ def grpc_gateway_library(name:str, srcs:list, deps:list=None, visibility:list=No
         test_only = test_only,
         root_dir = root_dir,
         protoc_flags = protoc_flags,
+        additional_context=additional_context,
     )
 
 def protoc_binary(name, url:str|dict = '', version:str = '', hashes=None, deps=None, visibility=None):
