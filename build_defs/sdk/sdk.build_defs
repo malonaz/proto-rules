@@ -20,8 +20,8 @@ def proto_build_defs(name:str, srcs:str|list, proto_languages:dict, visibility=[
 def proto_language(language:str, build_def:function, additional_provides:list|dict=[]):
     """Returns the definition of how to build a particular language for proto_library or grpc_library.
 
-    This should be wrapped in a function so that the proto_languages() build definition below can 
-    
+    This should be wrapped in a function so that the proto_languages() build definition below can
+
     Args:
       language (str): Name of the language (as we would name it).
       build_def (function): The build definition lambda. Will be called with the same arguments proto_library
@@ -146,7 +146,7 @@ def protoc_rule(name:str, srcs:list, deps:list, language:str, tools:dict={}, pro
         cmd = cmd,
         deps = deps,
         tools = tools,
-        requires = ['proto', language],
+        requires = ['proto'],
         pre_build = _collect_protoc_flags(pre_build),
         labels = labels,
         needs_transitive_deps = True,
